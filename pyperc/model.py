@@ -144,7 +144,7 @@ class InvasionPercolation(object):
         tension : float
             Surface tension (N/m)
         """
-        self.pores['angle'] = np.NaN
+        self.pores['angle'] = np.nan
         for i, n in enumerate(contact_angles):
             self.pores.loc[self.pores['grain'] == i, 'angle'] = n
     

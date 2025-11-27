@@ -207,7 +207,7 @@ class InvasionPercolation(object):
             self.pores.loc[previous_filled_node,'neighbor'] = 0
             neigh = self.A[previous_filled_node]
             #pore_idx = self.pores.index[self.pores.occupy > 0]
-            #neighbor_idx = set(neigh) - set(pore_idx)
+            #neighbor_idx = list(set(neigh) - set(pore_idx))
             neighbor_idx = (self.pores.loc[neigh,'occupy'] == 0)
             neighbor_idx = neighbor_idx.index[neighbor_idx]
         else:
@@ -215,10 +215,10 @@ class InvasionPercolation(object):
             pore_idx = self.pores.index[self.pores.occupy > 0]
             neigh = self.A[pore_idx]
             neigh = list(itertools.chain.from_iterable(neigh.values))
-            neighbor_idx = set(neigh) - set(pore_idx)
+            neighbor_idx = list(set(neigh) - set(pore_idx))
             #neighbor_idx = (self.pores.loc[neigh,'occupy'] == 0)
             #neighbor_idx = neighbor_idx.index[neighbor_idx]
-        self.pores.loc[neighbor_idx,'neighbor'] = 1
+        self.pores.loc[list(neighbor_idx),'neighbor'] = 1
     
     def _select_node(self):
         """

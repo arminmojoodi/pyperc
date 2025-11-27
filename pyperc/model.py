@@ -187,7 +187,7 @@ class InvasionPercolation(object):
         """  
         if p <= 0:
             #f = 1/(2*(p+1))
-            c = np.Inf
+            c = np.inf
         else:
             #f = 0.5
             c = 1/p
